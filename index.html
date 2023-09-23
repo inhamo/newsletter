@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | News homepage</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --soft-orange: hsl(35, 77%, 62%);
+      --soft-red: hsl(5, 85%, 63%);
+      --off-white: hsl(36, 100%, 99%);
+      --grayish-blue: hsl(233, 8%, 79%);
+      --dark-grayish-blue: hsl(236, 13%, 42%);
+      --very-dark-blue: hsl(240, 100%, 5%);
+    }
+
+    body{
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      box-sizing: border-box;
+      height: 100vh;
+      width: 100%;
+      position: relative;
+    }
+
+    nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      margin: 0 .75rem;
+    }
+    .logo, .menu {
+      width: 30px;
+    }
+
+    .main-image{
+      height: 50vh;
+      width: calc(375px - 6%);
+      margin: 0 .75rem;
+    }
+    .heading {
+      font-size: 36px;
+      font-weight: 800;
+      margin: .5rem 5rem .5rem .75rem;
+    }
+    .intro{
+      margin: 0 .75rem;
+      font-weight: 400;
+      font-size: 15px;
+      color: var(--grayish-blue);
+    }
+    .read-more-btn{
+      margin: .75rem;
+      padding: .5rem 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--off-white);
+      background-color: var(--soft-red);
+      border: none;
+    }
+    
+    .new-content{
+      background-color: var(--very-dark-blue);
+      color: var(--off-white);
+      margin: .75rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .new-content-heading{
+      font-size: 25px;
+      font-weight: 700;
+      margin: .5rem 0 0 1rem;
+      color: var(--soft-orange);
+    }
+    .new-content-information{
+      margin: .75rem 1rem;
+      border-bottom: 1px solid var(--off-white);
+    }
+    .new-content-information-heading{
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .new-content-information p:not(.new-content-information-heading){
+      font-size: 16px;
+      color: var(--grayish-blue);
+    }
+    .capital-letters{
+      text-transform: uppercase;
+    }
+    .about-comps-div{
+      display: flex;
+      align-items: center;
+      margin: .5rem .75rem;
+      line-height: .75rem;
+    }
+    .about-comps-div-img{
+      width: 150px;
+      height: 100px;
+      margin-right: .5rem;
+    }
+    .about-comps-div-img-2{
+      width: 120px;
+      height: 100px;
+      margin-right: .5rem;
+    }
+    .about-comps-div-img-3{
+      width: 130px;
+      height: 100px;
+      margin-right: .5rem;
+    }
+    .num{
+      color: var(--grayish-blue);
+      font-size: 25px;
+      font-weight:700;
+      margin: 0;
+    }
+    .about-comps-info-heading{
+      color: var(--very-dark-blue);
+      font-weight: 700;
+    }
+    .about-comps-info-info{
+      color: var(--dark-grayish-blue);
+      line-height: 1rem;
+      font-size: 14px;
+    }
+    .dropdown{
+      height: 100vh;
+      position: absolute;
+      width: 70%;
+      top: 0;
+      background-color: var(--off-white);
+      right: 0;
+      display: none;
+      cursor: pointer;
+    }
+    .dropdown img{
+      position: absolute;
+      width: 20px;
+      right: 0;
+      margin: 1rem;
+    }
+    .dropdown ul{
+      list-style: none;
+      line-height: 3rem;
+      position: absolute;
+      top: 20%;
+    }
+    .main-image-desktop{
+      display: none;
+    }
+
+    @media (min-width:1024px) {
+        body{
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+        .wrapper{
+          height: 100vh;
+          width: 80vw;
+          display: grid;
+          grid-template-rows: 1fr 5fr;
+        } 
+        .main-image{
+          display: none;
+        }
+        .main-image-desktop{
+          display: block;
+          width: 100%;
+          height: 40vh;
+        }
+        .main-container{
+          display: grid;
+          grid-template-rows: repeat(2,1fr);
+        }
+        .main-container-top{
+          display: grid;
+          grid-template-columns: 4fr 2fr;
+        }
+        .about-computers{
+          display: grid;
+          grid-template-columns: repeat(3,1fr);
+        }
+        .main-content-info{
+          display: grid;
+          grid-template-columns: repeat(2,1fr);
+          align-items: center;
+        }
+        .main-content-info-right{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .main-content-info-right p{
+          margin-top: 2rem;
+        }
+        .read-more-btn{
+          width: 140px;
+          background-color: var(--very-dark-blue);
+          margin-top: 3rem;
+          cursor: pointer;
+        }
+        .read-more-btn:hover{
+          background-color: var(--soft-red);
+        }
+        .main-content{
+          margin: 1rem;
+        }
+        .new-content{
+          margin: 1rem;
+        }
+        .about-comps-info-heading{
+          cursor: pointer;
+        }
+        .about-comps-info-heading:hover{
+          color: var(--soft-red);
+        }
+        .menu{
+          display: none;
+        }
+        .nav-text-list{
+          list-style: none;
+          display: flex;
+          color: var(--grayish-blue);
+        }
+        .nav-text-list > li {
+          margin: 0 .5rem ;
+          cursor: pointer;
+        }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrapper">  
+    <nav>
+      <img class="logo" src="./assets/images/logo.svg" alt="The company logo">
+      <img class="menu" src="./assets/images/icon-menu.svg" alt="the menu">
+      <div class="nav-text">
+        <ul class = "nav-text-list">
+          <li>Home</li>
+          <li>New</li>
+          <li>Popular</li>
+          <li>Trending</li>
+          <li>Categories</li>
+        </ul>
+      </div>
+    </nav>
+    <section class="main-container">
+      <section class="main-container-top">
+        <section class="main-content">
+          <img class="main-image" src="./assets/images/image-web-3-mobile.jpg" alt="main image">
+          <img class="main-image-desktop" src="./assets/images/image-web-3-desktop.jpg" alt="desktop">
+          <div class="main-content-info">
+            <p class="heading">The Bright Future of Web 3.0?</p>
+            <div class="main-content-info-right">
+              <p class="intro">We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. But is it really fulfulling its promise?</p>
+              <button class="read-more-btn">Read more</button>
+            </div>
+          </div>
+        </section>
+        <section class="new-content">
+          <p class="new-content-heading">New</p>
+          <div class="new-content-information">
+            <p class="new-content-information-heading">Hydrogen <span class="capital-letters">vs</span> Electric Cars</p>
+            <p>Will hydogren-fuelled cars ever catch up to EVs?</p>
+          </div>
+          <div class="new-content-information">
+            <p class="new-content-information-heading">The Downsides of AI Artistry</p>
+            <p>What are the possible adverse effects of on-demand AI image generation?</p>
+          </div>
+          <div class="new-content-information" style="border: none;">
+            <p class="new-content-information-heading">Is <span class="capital-letters">vc</span> Funding Drying Up?</p>
+            <p>Private funding by <span class="capital-letters">vc</span> firms is down 50%
+              <span class="capital-letters">yoy</span>. We take a look at what that means</p>
+          </div>
+        </section>
+      </section>
+      <section class="main-container-bottom">
+        <section class="about-computers">
+          <div class="about-comps-div">
+            <img class="about-comps-div-img" src="./assets/images/image-retro-pcs.jpg" alt="retro pc">
+            <div class="about-comps-info">
+              <p class="num"> 01 </p>
+              <p class="about-comps-info-heading">Reviving Retro PCs</p>
+              <p class="about-comps-info-info">What happens when old PCs are given modern upgrades</p>
+            </div>
+          </div>
+          <div class="about-comps-div">
+            <img class="about-comps-div-img-2" src="./assets/images/image-top-laptops.jpg" alt="top laptops">
+            <div class="about-comps-info">
+              <p class="num"> 02 </p>
+              <p class="about-comps-info-heading">Top 10 Laptops of 2022</p>
+              <p class="about-comps-info-info">Our best picks for various needs and budgets</p>
+            </div>
+          </div>
+          <div class="about-comps-div">
+            <img class="about-comps-div-img-3" src="./assets/images/image-gaming-growth.jpg" alt="The Growth of Gaming">
+            <div class="about-comps-info">
+              <p class="num"> 03 </p>
+              <p class="about-comps-info-heading">The Growth of Gaming</p>
+              <p class="about-comps-info-info">How the pandemic has sparked fresh opportunies</p>
+            </div>
+          </div>
+        </section>
+      </section>  
+    </section>
+    <section class="dropdown">
+      <img class="close" src="./assets/images/icon-menu-close.svg" alt="close">
+      <ul>
+        <li>Home</li>
+        <li>New</li>
+        <li>Popular</li>
+        <li>Trending</li>
+        <li>Categories</li>
+      </ul>
+    </section>
+  </main>
+</body>
+<script>
+    document.querySelector('.menu').addEventListener('click', ()=>{
+      document.querySelector('.dropdown').style.display = 'block';
+    });
+
+    document.querySelector('.close').addEventListener('click', ()=> {
+      document.querySelector('.dropdown').style.display = 'none';
+    })
+</script>
+</html>
